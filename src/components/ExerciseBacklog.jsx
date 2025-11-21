@@ -11,7 +11,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
     notes: ''
   });
 
-  const muscleGroupOptions = ['Brust', 'Rücken', 'Beine', 'Schultern', 'Arme', 'Bauch', 'Po', 'Ganzkörper'];
+  const muscleGroupOptions = ['Brust', 'Rücken', 'Beine', 'Po', 'Schultern', 'Arme', 'Bauch', 'Ganzkörper'];
   const equipmentOptions = ['Körpergewicht', 'Kurzhanteln', 'Langhanteln', 'Resistance Band', 'Kettlebell', 'Maschine'];
 
   const handleSubmit = async (e) => {
