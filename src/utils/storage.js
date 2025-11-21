@@ -41,9 +41,12 @@ class StorageAPI {
   }
 }
 
-// Initialize storage API
+// Initialize storage API - use custom namespace to avoid conflicts
+const storageAPI = new StorageAPI();
+
+// Also expose as window.storage for compatibility with the requirement
 if (!window.storage) {
-  window.storage = new StorageAPI();
+  window.storage = storageAPI;
 }
 
-export default window.storage;
+export default storageAPI;

@@ -1,16 +1,92 @@
-# React + Vite
+# Training Tracker 🏋️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Eine React-basierte Trainingsplanungs-Anwendung für effektives Workout-Management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Übungs-Backlog 📋
+- Übungen erstellen, bearbeiten und löschen
+- Muskelgruppen zuweisen (Brust, Rücken, Beine, Schultern, Arme, Bauch, Ganzkörper)
+- Equipment auswählen (Körpergewicht, Kurzhanteln, Langhanteln, Resistance Band, etc.)
+- Suchfunktion nach Übungsname oder Muskelgruppe
+- Notizen zu Übungen hinzufügen
 
-## React Compiler
+### Trainingsplanung 📅
+- Wochenkalender-Ansicht
+- Trainings für bestimmte Daten erstellen
+- Übungen aus dem Backlog hinzufügen
+- Anzahl der Sätze und Ziel-Wiederholungen pro Übung definieren
+- Trainings bearbeiten und löschen
+- Status-Übersicht (Geplant, Läuft, Abgeschlossen)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Training durchführen 💪
+- Training starten und Fortschritt verfolgen
+- Tatsächliche Wiederholungen pro Satz eintragen
+- Gewicht optional dokumentieren
+- Equipment-Notizen pro Satz
+- Sätze als abgeschlossen markieren
+- Notizen zum gesamten Training
+- Visueller Fortschrittsbalken
 
-## Expanding the ESLint configuration
+## Technischer Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 19** mit Hooks (useState, useEffect)
+- **Vite** als Build-Tool
+- **Tailwind CSS v4** für responsives Design
+- **LocalStorage** für Datenpersistenz (mit window.storage API Mock)
+
+## Installation
+
+```bash
+# Dependencies installieren
+npm install
+
+# Development Server starten
+npm run dev
+
+# Für Produktion bauen
+npm run build
+
+# Code linting
+npm run lint
+```
+
+## Projekt-Struktur
+
+```
+src/
+├── components/          # React Komponenten
+│   ├── ExerciseBacklog.jsx
+│   ├── TrainingPlan.jsx
+│   └── ActiveTraining.jsx
+├── hooks/              # Custom React Hooks
+│   ├── useExercises.js
+│   └── useTrainingSessions.js
+├── utils/              # Utility Funktionen
+│   ├── storage.js
+│   └── dateUtils.js
+├── App.jsx            # Haupt-App-Komponente
+└── main.jsx           # Entry Point
+```
+
+## Datenpersistenz
+
+Die App verwendet einen Mock der `window.storage` API, der auf `localStorage` aufbaut:
+- `exercises` - Übungs-Backlog
+- `training-sessions` - Alle Trainings
+
+Daten bleiben auch nach Browser-Neustart erhalten.
+
+## Mobile-First Design
+
+- Responsive Layout optimiert für Smartphones
+- Touch-freundliche Buttons (mindestens 44x44px)
+- Bottom Navigation für einfache Bedienung
+- Große, klare UI-Elemente
+
+## Browser-Kompatibilität
+
+Moderne Browser mit ES6+ Support:
+- Chrome/Edge (aktuell)
+- Firefox (aktuell)
+- Safari (aktuell)
