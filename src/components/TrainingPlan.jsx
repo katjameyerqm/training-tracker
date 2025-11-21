@@ -146,7 +146,7 @@ export default function TrainingPlan({
                   onClick={() => handleDateClick(date)}
                   className={`w-full p-2 rounded-lg border-2 min-h-[60px] ${
                     today 
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-primary bg-peach/20'
                       : 'border-gray-200 bg-white'
                   } hover:bg-gray-50`}
                 >
@@ -157,9 +157,9 @@ export default function TrainingPlan({
                         <div
                           key={s.id}
                           className={`w-2 h-2 rounded-full mx-auto mb-1 ${
-                            s.status === 'completed' ? 'bg-green-500' :
-                            s.status === 'in-progress' ? 'bg-yellow-500' :
-                            'bg-blue-500'
+                            s.status === 'completed' ? 'bg-coral' :
+                            s.status === 'in-progress' ? 'bg-peach' :
+                            'bg-secondary'
                           }`}
                         />
                       ))}
@@ -188,7 +188,7 @@ export default function TrainingPlan({
                     e.target.value = '';
                   }
                 }}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               >
                 <option value="">Übung auswählen...</option>
                 {exercises.map(ex => (
@@ -244,7 +244,7 @@ export default function TrainingPlan({
               <button
                 onClick={handleSaveSession}
                 disabled={selectedExercises.length === 0}
-                className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 active:bg-green-800 disabled:bg-gray-300 disabled:cursor-not-allowed min-h-[44px]"
+                className="flex-1 bg-coral text-white py-3 px-4 rounded-lg font-semibold hover:bg-coral-dark active:bg-coral-dark disabled:bg-gray-300 disabled:cursor-not-allowed min-h-[44px]"
               >
                 Training speichern
               </button>
@@ -274,9 +274,9 @@ export default function TrainingPlan({
                     <div>
                       <h3 className="font-semibold">{formatDate(session.date)}</h3>
                       <span className={`text-xs px-2 py-1 rounded ${
-                        session.status === 'completed' ? 'bg-green-100 text-green-700' :
-                        session.status === 'in-progress' ? 'bg-yellow-100 text-yellow-700' :
-                        'bg-blue-100 text-blue-700'
+                        session.status === 'completed' ? 'bg-coral/20 text-coral-dark' :
+                        session.status === 'in-progress' ? 'bg-peach/30 text-secondary-dark' :
+                        'bg-secondary/20 text-secondary-dark'
                       }`}>
                         {session.status === 'completed' ? 'Abgeschlossen' :
                          session.status === 'in-progress' ? 'Läuft' :
@@ -287,7 +287,7 @@ export default function TrainingPlan({
                       {session.status === 'planned' && (
                         <button
                           onClick={() => onStartSession(session.id)}
-                          className="px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 min-h-[44px]"
+                          className="px-3 py-1 bg-coral/20 text-coral-dark rounded hover:bg-coral/30 min-h-[44px]"
                         >
                           ▶ Start
                         </button>
