@@ -2,6 +2,8 @@
 
 Eine React-basierte Trainingsplanungs-Anwendung für effektives Workout-Management.
 
+🌐 **Live Demo:** [https://katjameyerqm.github.io/training-tracker/](https://katjameyerqm.github.io/training-tracker/)
+
 ## Features
 
 ### Übungs-Backlog 📋
