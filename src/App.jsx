@@ -64,7 +64,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-blue-600 text-white p-4 shadow-md">
+      <header className="bg-primary text-white p-4 shadow-md">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl font-bold">🏋️ Training Tracker</h1>
         </div>
@@ -108,7 +108,7 @@ function App() {
             onClick={() => setActiveTab('backlog')}
             className={`flex-1 py-3 px-4 text-center min-h-[60px] ${
               activeTab === 'backlog'
-                ? 'bg-blue-50 text-blue-600 border-t-2 border-blue-600'
+                ? 'bg-peach/20 text-primary border-t-2 border-primary'
                 : 'text-gray-600'
             }`}
           >
@@ -120,7 +120,7 @@ function App() {
             onClick={() => setActiveTab('plan')}
             className={`flex-1 py-3 px-4 text-center min-h-[60px] ${
               activeTab === 'plan'
-                ? 'bg-blue-50 text-blue-600 border-t-2 border-blue-600'
+                ? 'bg-peach/20 text-primary border-t-2 border-primary'
                 : 'text-gray-600'
             }`}
           >
@@ -132,12 +132,12 @@ function App() {
             onClick={() => setActiveTab('active')}
             className={`flex-1 py-3 px-4 text-center min-h-[60px] relative ${
               activeTab === 'active'
-                ? 'bg-blue-50 text-blue-600 border-t-2 border-blue-600'
+                ? 'bg-peach/20 text-primary border-t-2 border-primary'
                 : 'text-gray-600'
             }`}
           >
             {activeSession && (
-              <span className="absolute top-2 right-2 w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+              <span className="absolute top-2 right-2 w-3 h-3 bg-coral rounded-full animate-pulse" />
             )}
             <div className="text-2xl">💪</div>
             <div className="text-xs font-medium mt-1">Training</div>

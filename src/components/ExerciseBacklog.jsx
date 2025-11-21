@@ -78,13 +78,13 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
             placeholder="Übung oder Muskelgruppe suchen..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
           />
         </div>
 
         <button
           onClick={() => setShowForm(!showForm)}
-          className="w-full mb-4 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold text-lg hover:bg-blue-700 active:bg-blue-800 min-h-[44px]"
+          className="w-full mb-4 bg-secondary text-white py-3 px-4 rounded-lg font-semibold text-lg hover:bg-secondary-dark active:bg-secondary-dark min-h-[44px]"
         >
           {showForm ? 'Abbrechen' : '+ Neue Übung'}
         </button>
@@ -102,7 +102,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
 
@@ -116,7 +116,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
                     onClick={() => toggleMuscleGroup(group)}
                     className={`px-3 py-2 rounded-lg text-sm font-medium min-h-[44px] ${
                       formData.muscleGroups.includes(group)
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-secondary text-white'
                         : 'bg-gray-200 text-gray-700'
                     }`}
                   >
@@ -131,7 +131,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
               <select
                 value={formData.equipment}
                 onChange={(e) => setFormData({ ...formData, equipment: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               >
                 <option value="">Auswählen...</option>
                 {equipmentOptions.map(eq => (
@@ -145,7 +145,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
               <textarea
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                 rows="3"
               />
             </div>
@@ -154,7 +154,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
               <button
                 type="submit"
                 disabled={!formData.name || formData.muscleGroups.length === 0}
-                className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 active:bg-green-800 disabled:bg-gray-300 disabled:cursor-not-allowed min-h-[44px]"
+                className="flex-1 bg-coral text-white py-3 px-4 rounded-lg font-semibold hover:bg-coral-dark active:bg-coral-dark disabled:bg-gray-300 disabled:cursor-not-allowed min-h-[44px]"
               >
                 {editingId ? 'Speichern' : 'Hinzufügen'}
               </button>
@@ -182,7 +182,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(exercise)}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 min-h-[44px] min-w-[44px]"
+                      className="px-3 py-1 bg-accent/20 text-accent-dark rounded hover:bg-accent/30 min-h-[44px] min-w-[44px]"
                     >
                       ✏️
                     </button>
@@ -196,7 +196,7 @@ export default function ExerciseBacklog({ exercises, onAdd, onEdit, onDelete }) 
                 </div>
                 <div className="flex flex-wrap gap-1 mb-2">
                   {exercise.muscleGroups?.map(group => (
-                    <span key={group} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                    <span key={group} className="px-2 py-1 bg-secondary/20 text-secondary-dark text-xs rounded">
                       {group}
                     </span>
                   ))}

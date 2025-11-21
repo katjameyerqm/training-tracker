@@ -92,7 +92,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div
-                className="bg-green-600 h-3 rounded-full transition-all duration-300"
+                className="bg-coral h-3 rounded-full transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -113,7 +113,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                   <div
                     key={setIndex}
                     className={`border rounded-lg p-3 mb-2 ${
-                      set.completed ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'
+                      set.completed ? 'bg-coral/10 border-coral/50' : 'bg-white border-gray-200'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
@@ -140,7 +140,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                             min="0"
                             value={set.actualReps}
                             onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'actualReps', e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                             placeholder="Wiederholungen"
                           />
                         </div>
@@ -156,7 +156,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                           step="0.5"
                           value={set.weight}
                           onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'weight', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                           placeholder="Optional"
                         />
                       </div>
@@ -170,7 +170,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                         type="text"
                         value={set.equipment || ''}
                         onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'equipment', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                         placeholder="z.B. Kurzhanteln, Band..."
                       />
                     </div>
@@ -187,7 +187,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
             rows="3"
             placeholder="Wie lief das Training? Besonderheiten?"
           />
@@ -196,7 +196,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
         {/* Complete Button */}
         <button
           onClick={handleCompleteTraining}
-          className="w-full mt-4 bg-green-600 text-white py-4 px-4 rounded-lg font-semibold text-lg hover:bg-green-700 active:bg-green-800 min-h-[44px]"
+          className="w-full mt-4 bg-coral text-white py-4 px-4 rounded-lg font-semibold text-lg hover:bg-coral-dark active:bg-coral-dark min-h-[44px]"
         >
           Training abschließen
         </button>
