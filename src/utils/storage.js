@@ -1,15 +1,34 @@
-// Mock implementation of window.storage API for persistent cloud storage
-// In production, this would be replaced with actual cloud storage implementation
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
+import { auth } from '../firebase/config';
+
+// Firebase-based storage implementation for persistent cloud storage
+// Falls back to localStorage when user is not authenticated
 
 class StorageAPI {
   constructor() {
     this.prefix = 'training-tracker-';
   }
 
+  // Get user ID for Firestore path
+  getUserId() {
+    return auth.currentUser?.uid || 'anonymous';
+  }
+
   async set(key, value) {
     try {
-      const serialized = JSON.stringify(value);
-      localStorage.setItem(this.prefix + key, serialized);
+      const userId = this.getUserId();
+      
+      // If user is authenticated, save to Firestore
+      if (auth.currentUser) {
+        const docRef = doc(db, 'users', userId, 'data', key);
+        await setDoc(docRef, { value, updatedAt: new Date().toISOString() });
+      } else {
+        // Fallback to localStorage if not authenticated
+        const serialized = JSON.stringify(value);
+        localStorage.setItem(this.prefix + key, serialized);
+      }
+      
       return true;
     } catch (error) {
       console.error('Storage set error:', error);
@@ -19,11 +38,25 @@ class StorageAPI {
 
   async get(key) {
     try {
-      const serialized = localStorage.getItem(this.prefix + key);
-      if (serialized === null) {
+      const userId = this.getUserId();
+      
+      // If user is authenticated, get from Firestore
+      if (auth.currentUser) {
+        const docRef = doc(db, 'users', userId, 'data', key);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+          return docSnap.data().value;
+        }
         return null;
+      } else {
+        // Fallback to localStorage if not authenticated
+        const serialized = localStorage.getItem(this.prefix + key);
+        if (serialized === null) {
+          return null;
+        }
+        return JSON.parse(serialized);
       }
-      return JSON.parse(serialized);
     } catch (error) {
       console.error('Storage get error:', error);
       throw new Error('Fehler beim Laden der Daten');
@@ -32,7 +65,17 @@ class StorageAPI {
 
   async remove(key) {
     try {
-      localStorage.removeItem(this.prefix + key);
+      const userId = this.getUserId();
+      
+      // If user is authenticated, remove from Firestore
+      if (auth.currentUser) {
+        const docRef = doc(db, 'users', userId, 'data', key);
+        await setDoc(docRef, { value: null, updatedAt: new Date().toISOString() });
+      } else {
+        // Fallback to localStorage if not authenticated
+        localStorage.removeItem(this.prefix + key);
+      }
+      
       return true;
     } catch (error) {
       console.error('Storage remove error:', error);
