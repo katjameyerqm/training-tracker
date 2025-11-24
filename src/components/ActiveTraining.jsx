@@ -140,7 +140,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                             min="0"
                             value={set.actualReps}
                             onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'actualReps', e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                             placeholder="Wiederholungen"
                           />
                         </div>
@@ -156,7 +156,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                           step="0.5"
                           value={set.weight}
                           onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'weight', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="Optional"
                         />
                       </div>
@@ -170,7 +170,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
                         type="text"
                         value={set.equipment || ''}
                         onChange={(e) => handleSetUpdate(exerciseIndex, setIndex, 'equipment', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                         placeholder="z.B. Kurzhanteln, Band..."
                       />
                     </div>
@@ -187,7 +187,7 @@ export default function ActiveTraining({ session, exercises, onUpdateSession }) 
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
             rows="3"
             placeholder="Wie lief das Training? Besonderheiten?"
           />

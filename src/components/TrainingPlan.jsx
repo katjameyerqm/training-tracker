@@ -146,7 +146,7 @@ export default function TrainingPlan({
                   onClick={() => handleDateClick(date)}
                   className={`w-full p-2 rounded-lg border-2 min-h-[60px] ${
                     today 
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-primary-500 bg-primary-50'
                       : 'border-gray-200 bg-white'
                   } hover:bg-gray-50`}
                 >
@@ -159,7 +159,7 @@ export default function TrainingPlan({
                           className={`w-2 h-2 rounded-full mx-auto mb-1 ${
                             s.status === 'completed' ? 'bg-green-500' :
                             s.status === 'in-progress' ? 'bg-yellow-500' :
-                            'bg-blue-500'
+                            'bg-primary-500'
                           }`}
                         />
                       ))}
@@ -188,7 +188,7 @@ export default function TrainingPlan({
                     e.target.value = '';
                   }
                 }}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="">Übung auswählen...</option>
                 {exercises.map(ex => (
@@ -276,7 +276,7 @@ export default function TrainingPlan({
                       <span className={`text-xs px-2 py-1 rounded ${
                         session.status === 'completed' ? 'bg-green-100 text-green-700' :
                         session.status === 'in-progress' ? 'bg-yellow-100 text-yellow-700' :
-                        'bg-blue-100 text-blue-700'
+                        'bg-primary-100 text-primary-700'
                       }`}>
                         {session.status === 'completed' ? 'Abgeschlossen' :
                          session.status === 'in-progress' ? 'Läuft' :
