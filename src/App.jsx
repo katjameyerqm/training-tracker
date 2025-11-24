@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useAuth } from './contexts/AuthContext';
 import { useExercises } from './hooks/useExercises';
 import { useTrainingSessions } from './hooks/useTrainingSessions';
 import ExerciseBacklog from './components/ExerciseBacklog';
 import TrainingPlan from './components/TrainingPlan';
 import ActiveTraining from './components/ActiveTraining';
+import Login from './components/Login';
 
 function App() {
   const [activeTab, setActiveTab] = useState('plan'); // 'backlog', 'plan', 'active'
+  const { currentUser, loading: authLoading, logout } = useAuth();
   
   const {
     exercises,
@@ -38,6 +41,33 @@ function App() {
     }
   };
 
+  const handleLogout = async () => {
+    if (window.confirm('Möchten Sie sich wirklich abmelden?')) {
+      try {
+        await logout();
+      } catch (error) {
+        alert('Fehler beim Abmelden: ' + error.message);
+      }
+    }
+  };
+
+  // Show loading screen while checking authentication
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="text-4xl mb-2">⏳</div>
+          <div className="text-gray-600">Wird geladen...</div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show login screen if not authenticated
+  if (!currentUser) {
+    return <Login />;
+  }
+
   if (exercisesLoading || sessionsLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -65,8 +95,15 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 shadow-md">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
           <h1 className="text-2xl font-bold">🏋️ Training Tracker</h1>
+          <button
+            onClick={handleLogout}
+            className="text-sm bg-blue-700 hover:bg-blue-800 px-3 py-1 rounded transition-colors"
+            title="Abmelden"
+          >
+            Abmelden
+          </button>
         </div>
       </header>
 
