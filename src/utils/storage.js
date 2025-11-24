@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { auth } from '../firebase/config';
 
@@ -70,7 +70,7 @@ class StorageAPI {
       // If user is authenticated, remove from Firestore
       if (auth.currentUser) {
         const docRef = doc(db, 'users', userId, 'data', key);
-        await setDoc(docRef, { value: null, updatedAt: new Date().toISOString() });
+        await deleteDoc(docRef);
       } else {
         // Fallback to localStorage if not authenticated
         localStorage.removeItem(this.prefix + key);

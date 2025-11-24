@@ -25,6 +25,9 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Clear error state
+  const clearError = () => setError(null);
+
   // Sign up with email and password
   const signup = async (email, password) => {
     try {
@@ -91,6 +94,7 @@ export function AuthProvider({ children }) {
     login,
     loginWithGoogle,
     logout,
+    clearError,
   };
 
   return (
