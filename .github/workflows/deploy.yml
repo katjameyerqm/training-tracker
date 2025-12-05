@@ -78,4 +78,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
-          projectId: training-tracker-7d24a
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}

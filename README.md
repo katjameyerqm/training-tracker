@@ -148,14 +148,19 @@ Das Projekt verwendet einen automatisierten GitHub Actions Workflow, der bei jed
 
 ### Voraussetzungen für Firebase Deployment
 
-Um Firebase Hosting Deployment zu aktivieren, muss ein `FIREBASE_SERVICE_ACCOUNT` Secret in den Repository-Einstellungen konfiguriert werden:
+Um Firebase Hosting Deployment zu aktivieren, müssen folgende Konfigurationen in den Repository-Einstellungen vorgenommen werden:
 
+**Secret:**
 1. Gehe zu [Firebase Console](https://console.firebase.google.com/) → Project Settings → Service Accounts
 2. Klicke auf **"Generate new private key"** und lade die JSON-Datei herunter
 3. Gehe zu GitHub Repository → Settings → Secrets and variables → Actions
 4. Erstelle ein neues Secret mit dem Namen `FIREBASE_SERVICE_ACCOUNT` und füge den Inhalt der JSON-Datei ein
 
-### Manueller Deployment
+**Variable:**
+1. Gehe zu GitHub Repository → Settings → Secrets and variables → Actions → Variables
+2. Erstelle eine neue Variable mit dem Namen `FIREBASE_PROJECT_ID` und setze den Wert auf deine Firebase Project ID
+
+### Manuelles Deployment
 
 Der Workflow kann auch manuell über GitHub Actions → "Build and Deploy" → "Run workflow" ausgelöst werden.
 
