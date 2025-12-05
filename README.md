@@ -138,6 +138,27 @@ Jeder Benutzer hat seine eigenen Daten unter `/users/{userId}/data/`.
 - Bottom Navigation für einfache Bedienung
 - Große, klare UI-Elemente
 
+## Deployment
+
+Das Projekt verwendet einen automatisierten GitHub Actions Workflow, der bei jedem Push auf den `main` Branch ausgelöst wird:
+
+1. **Build**: Der Frontend-Code wird mit Vite gebaut
+2. **GitHub Pages Deployment**: Der Build wird automatisch auf GitHub Pages bereitgestellt
+3. **Firebase Hosting Deployment**: Der Build wird automatisch auf Firebase Hosting bereitgestellt
+
+### Voraussetzungen für Firebase Deployment
+
+Um Firebase Hosting Deployment zu aktivieren, muss ein `FIREBASE_SERVICE_ACCOUNT` Secret in den Repository-Einstellungen konfiguriert werden:
+
+1. Gehe zu [Firebase Console](https://console.firebase.google.com/) → Project Settings → Service Accounts
+2. Klicke auf **"Generate new private key"** und lade die JSON-Datei herunter
+3. Gehe zu GitHub Repository → Settings → Secrets and variables → Actions
+4. Erstelle ein neues Secret mit dem Namen `FIREBASE_SERVICE_ACCOUNT` und füge den Inhalt der JSON-Datei ein
+
+### Manueller Deployment
+
+Der Workflow kann auch manuell über GitHub Actions → "Build and Deploy" → "Run workflow" ausgelöst werden.
+
 ## Browser-Kompatibilität
 
 Moderne Browser mit ES6+ Support:
